@@ -1,98 +1,94 @@
-USE sample_sales;
-
 -- What is total revenue overall for sales in the assigned territory, plus the start date and end date
 -- that tell you what period the data covers
 
-SELECT SUM(sale_amount) AS Total_Revenue,
-MIN(transaction_date) AS Start_Date,
-MAX(transaction_date) AS End_Date
-FROM store_sales
-INNER JOIN management
-ON store_sales.id = management.id
-WHERE region = 'east';
 
--- What is the month by month revenue breakdown for the sales territory?
+
+USE sample_sales;
+-- =================================================================
+-- Start Date and END Date -- 
+
+-- EAST --
 
 SELECT SUM(sale_amount) AS total_revenue,
-transaction_date
-FROM store_sales
-INNER JOIN management
-ON store_sales.id = management.id
-WHERE region = 'east'
-GROUP BY transaction_date;
-
--- -- Breakdown by Store_Manager #1 Connecticut
-SELECT SUM(sale_amount) AS total_revenue,
-transaction_date
-FROM store_sales
-INNER JOIN management
-ON store_sales.id = management.id
-WHERE salesmanager = 'Ellen Lemon'
-GROUP BY transaction_date; -- $144
-
--- Breakdown price individuals -- 
-SELECT sale_amount AS total_revenue,
-storeid
+MIN(transaction_date) AS start_date,
+MAX(transaction_date) AS end_date, region
 FROM store_sales
 INNER JOIN store_locations
-ON store_sales.id = store_locations.storeid
+ON store_sales.store_id = store_locations.storeid
+INNER JOIN store_managers
+ON store_managers.state = store_locations.state
+WHERE region = 'east';
+
+-- Online--
+SELECT MAX(date) AS End_Date,
+MIN(date) AS Start_Date
+FROM online_sales;
+
+-- ================================================================
+-- -- Breakdown for Store_Managers --#1 
+SELECT SUM(sale_amount) AS total_revenue,
+store_manager
+FROM store_sales
+INNER JOIN store_locations
+ON store_sales.store_id = store_locations.storeid
+INNER JOIN store_managers
+ON store_managers.state = store_locations.state
+GROUP BY store_manager; -- $144
+
+-- =====================================================================
+-- -- CONNECTICUT -- --
+--  Price Breakdown -- 
+SELECT sale_amount AS total_revenue,
+storeid, state
+FROM store_sales
+INNER JOIN store_locations
+ON store_sales.store_id = store_locations.storeid
 WHERE state = 'Connecticut';
 
 -- Connecticut SUM
-SELECT SUM(sale_amount) AS total_revenue
+SELECT SUM(sale_amount) AS total_revenue,
+ROUND(AVG(sale_amount),2) AS average_revenue
 FROM store_sales
 INNER JOIN store_locations
-ON store_sales.id = store_locations.storeid
-WHERE state = 'Connecticut'; -- 831.98
+ON store_sales.store_id = store_locations.storeid
+WHERE state = 'Connecticut'; -- total = '2,392,222.44', average = '137.66'
 
-
--- Breakdown by Store_Manager #2 New York
-SELECT SUM(sale_amount) AS total_revenue,
-transaction_date
-FROM store_sales
-INNER JOIN management
-ON store_sales.id = management.id
-WHERE salesmanager = 'See Ellefson'
-GROUP BY transaction_date; -- $8
+-- ================================================================
+-- -- NEW YORK -- -- 
 
 -- Breakdown price individuals -- 
 SELECT sale_amount AS total_revenue,
-storeid
+storeid, state
 FROM store_sales
 INNER JOIN store_locations
-ON store_sales.id = store_locations.storeid
+ON store_sales.store_id = store_locations.storeid
 WHERE state = 'New York';
 
--- New York SUM
-SELECT SUM(sale_amount) AS total_revenue
+-- New York SUM and Average
+SELECT SUM(sale_amount) AS total_revenue,
+ROUND(AVG(sale_amount),2) AS average_revenue
 FROM store_sales
 INNER JOIN store_locations
-ON store_sales.id = store_locations.storeid
-WHERE state = 'New York'; -- 467.61
+ON store_sales.store_id = store_locations.storeid
+WHERE state = 'New York'; -- total = '4,330,817.09', average = '139.53'
 
-
--- Online sales by month
-SELECT 
-    EXTRACT(MONTH FROM date) AS month,
-    ROUND(SUM(salestotal),2) AS total_revenue
-FROM online_sales
-GROUP BY month
-ORDER BY month;
-
+-- ===============================================================
 -- Online sales by month and years
-SELECT 
-    DATE_FORMAT(Date, '%Y-%m') AS month,
+SELECT DATE_FORMAT(Date, '%Y-%m') AS month,
     ROUND(SUM(salestotal), 2) AS total_revenue
 FROM online_sales
 GROUP BY month
 ORDER BY month;
 
+select count(prodNum) from online_sales;
+
+-- =====================================================================
 -- Select All's for added information --
 SELECT *
 FROM inventory_categories;
 
 SELECT *
-FROM store_locations
+FROM store_locations;
 
 SELECT *
 FROM inventory_subcategories;
@@ -106,18 +102,50 @@ FROM products;
 SELECT *
 FROM online_sales;
 
--- Store Sales for East --
-SELECT product
+-- ===============================================================================
+-- Store products --
+
+-- Product price Breakdown -- Connecticut --
+SELECT product, 
+sale_amount, state, id, storeid
 FROM products
 JOIN store_sales
 ON products.ProdNum = store_sales.Prod_Num
-JOIN regional_directors
-ON store_sales.id = regional_directors.id
-WHERE Region = 'east';
+JOIN store_locations
+ON store_sales.store_id = store_locations.storeid
+WHERE state = 'connecticut';
 
+-- Common products -- Connecticut --
+SELECT COUNT(product), state, product
+FROM products
+JOIN store_sales
+ON products.ProdNum = store_sales.Prod_Num
+JOIN store_locations
+ON store_sales.Store_ID = store_locations.StoreID
+WHERE state = 'Connecticut'
+Group by product;
 
+-- Product price Breakdown -- New York --
+SELECT product, 
+sale_amount, state, id, storeid
+FROM products
+JOIN store_sales
+ON products.ProdNum = store_sales.Prod_Num
+JOIN store_locations
+ON store_sales.store_id = store_locations.storeid
+WHERE state = 'new york';
 
--- -- Extra Curious
+-- Common products -- New York --
+SELECT COUNT(product), state, product
+FROM products
+JOIN store_sales
+ON products.ProdNum = store_sales.Prod_Num
+JOIN store_locations
+ON store_sales.Store_ID = store_locations.StoreID
+WHERE state = 'New York'
+Group by product;
+
+-- -- Extra Curious =============================================
 -- -- Online sales shipped to the east
 -- ONLINE sales to Connecticut
 SELECT product, shiptostate
@@ -126,9 +154,25 @@ JOIN online_sales
 ON products.ProdNum = online_sales.ProdNum
 WHERE shiptostate = 'Connecticut';
 
+-- ONLINE Common Products -- Connecticut --
+SELECT COUNT(product), shiptostate, product
+FROM products
+JOIN online_sales
+ON products.ProdNum = online_sales.ProdNum
+WHERE shiptostate = 'Connecticut'
+Group by product;
+
 -- ONLINE sales to NEW YORK
 SELECT product, shiptostate
 FROM products
 JOIN online_sales
 ON products.ProdNum = online_sales.ProdNum
 WHERE shiptostate = 'New York';
+
+-- ONLINE Common Products -- New York --
+SELECT COUNT(product), shiptostate, product
+FROM products
+JOIN online_sales
+ON products.ProdNum = online_sales.ProdNum
+WHERE shiptostate = 'New York'
+Group by product;
