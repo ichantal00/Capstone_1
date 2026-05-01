@@ -2,28 +2,28 @@
 -- 1.What is total revenue overall for sales in the assigned territory, plus the start date and end date
 -- that tell you what period the data covers
 
--- === Answer: Line 32 ========----
+-- === Answer: Line 33 ========----
 
 -- 2.What is the month by month revenue breakdown for the sales territory?
 
--- === Answer: Line 124  ========----
+-- === Answer: Line 126  ========----
 
 -- 3.Provide a comparison of total revenue for the specific sales territory and the region it belongs to.
 
--- === Answer: Line 32, Line 70, Line 90,  ========----
+-- === Answer: Line 33, Line 73, Line 93,  ========----
 
 -- 4.What is the number of transactions per month and average transaction size by product category 
 -- for the sales territory?
 
--- === Answer: Line 257 and Line 227 ========----
+-- === Answer: Line 259 and Line 227 ========----
 
 -- 5.Can you provide a ranking of in-store sales performance by each store in the sales territory, 
 -- or a ranking of online sales performance by state within an online sales territory?
 
--- === Answer: Line 240 ========----
+-- === Answer: Line 244 ========----
 
 -- 6.What is your recommendation for where to focus sales attention in the next quarter?
--- === Answer:   ========----
+-- === Answer: Line 390  ========----
 USE sample_sales;
 -- =================================================================
 -- Start Date and END Date -- East vs. Online --
@@ -92,7 +92,7 @@ WHERE state = 'New York';
 -- New York SUM and Average
 SELECT SUM(sale_amount) AS total_revenue,
 ROUND(AVG(sale_amount),2) AS average_revenue
-FROM store_salesD
+FROM store_sales
 INNER JOIN store_locations
 ON store_sales.store_id = store_locations.storeid
 WHERE state = 'New York'; -- total = '4,330,817.09', average = '139.53'
@@ -384,3 +384,20 @@ JOIN Inventory_categories
 ON inventory_categories.Categoryid = products.Categoryid
 WHERE state = 'New York'
 GROUP BY category, Store_ID;
+
+
+-- ====================================================================================================================================--------------
+-- Recommendation --
+
+-- While Technology & Accessories and Textbooks are the primary revenue drivers and should remain a focus for growth, 
+-- the remaining categories contribute a small percentage of total sales. This suggests an opportunity to improve performance 
+-- through better product placement, targeted promotions, or inventory adjustments.
+
+-- We should test strategies to increase profitability by providing more visibility and promotions to Books (General)​
+-- and Stationery Supplies by cross-selling during the Fall.
+
+-- Example: ​
+-- Focusing on timing promotions (back-to-school, semester starts) ​
+-- Offer bundles or discounts during peak periods ​
+-- Selling notebooks with textbooks ​
+-- Selling art supplies with tablets 

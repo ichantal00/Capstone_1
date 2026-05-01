@@ -1,0 +1,103 @@
+Most Popular
+'93', 'New York', 'Day Designer Daily Planner (Undated)'
+'92', 'New York', 'Hand Lettering Practice Workbook'
+'91', 'New York', 'Olfa Rotary Cutter (45mm)'
+
+'56', 'Connecticut', 'Winsor & Newton Cotman Watercolor Brushes (Set of 5)'
+'56', 'Connecticut', 'Elmers Washable School Glue (4 oz)'
+'56', 'Connecticut', 'Corporate Finance'
+
+
+
+What caused the jump from 2024 - 2025 for all?
+
+What do these stores sell that make
+
+New York makes the most money
+'$621,565.02', '850', 'New York', 'East'
+	--'$9,216.58', '850', 'New York', 'New York', 'Stationery and Supplies'
+	--'$441,809.41', '850', 'New York', 'New York', 'Technology & Accessories'
+	--'$22,281.53', '850', 'New York', 'New York', 'Art Supplies'
+	--'$110,270.12', '850', 'New York', 'New York', 'Textbooks'
+	--'$27,553.68', '850', 'New York', 'New York', 'Apparel and Merchandise'
+	--'$10,433.70', '850', 'New York', 'New York', 'Books (General)'
+
+'$607,148.21', '847', 'New York', 'East'
+	--'$113,838.59', '847', 'Rochester', 'New York', 'Textbooks'
+	--'$21,809.13', '847', 'Rochester', 'New York', 'Art Supplies'
+	--'$423,716.67', '847', 'Rochester', 'New York', 'Technology & Accessories'
+	--'$10,357.99', '847', 'Rochester', 'New York', 'Books (General)'
+	--'$27,369.72', '847', 'Rochester', 'New York', 'Apparel and Merchandise'
+	--'$10,056.11', '847', 'Rochester', 'New York', 'Stationery and Supplies'
+
+
+Stores that makes Least money:
+('$288,553.14', '851', 'New York', 'East')
+	--'$12,350.69', '851', 'Queens', 'New York', 'Apparel and Merchandise'
+	--'$52,454.44', '851', 'Queens', 'New York', 'Textbooks'
+	--'$203,040.75', '851', 'Queens', 'New York', 'Technology & Accessories'
+	--'$4,935.09', '851', 'Queens', 'New York', 'Stationery and Supplies'
+	--'$10,429.42', '851', 'Queens', 'New York', 'Art Supplies'
+	--'$5,342.75', '851', 'Queens', 'New York', 'Books (General)'
+
+
+=====================================================================================================
+Store that makes Most Money:
+Store 3:'331116.76', '870', 'New London, Connecticut', 'East'
+	--'4,842.29', '870', 'New London', 'Connecticut', 'Stationery and Supplies'
+	--'10,824.61', '870', 'New London', 'Connecticut', 'Art Supplies'
+	--'5,097.14', '870', 'New London', 'Connecticut', 'Books (General)'
+	--'241,144.07', '870', 'New London', 'Connecticut', 'Technology & Accessories'
+	--'13,872.92', '870', 'New London', 'Connecticut', 'Apparel and Merchandise'
+	--'55,335.73', '870', 'New London', 'Connecticut', 'Textbooks'
+
+
+Stores that makes Least money:
+Store 1:'$283,455.62', id:'866', Location: 'Darien, Connecticut', Region: 'East'
+
+	--'$193,020.81', '866', 'Darien', 'Connecticut', 'Technology & Accessories'
+	--'$56,620.50', '866', 'Darien', 'Connecticut', 'Textbooks'
+	--'$11,332.66', '866', 'Darien', 'Connecticut', 'Art Supplies'
+	--'$4,359.44', '866', 'Darien', 'Connecticut', 'Stationery and Supplies'
+	--'$4,776.88', '866', 'Darien', 'Connecticut', 'Books (General)'
+	--'$13,345.33', '866', 'Darien', 'Connecticut', 'Apparel and Merchandise'
+
+Store 2:'$277,310.18', id:'871', Location: 'Old Saybrook, Connecticut', Region: 'East'
+	--'$51,812.22', '871', 'Old Saybrook', 'Connecticut', 'Textbooks'
+	--'$6,111.55', '871', 'Old Saybrook', 'Connecticut', 'Books (General)'
+	--'$18,8419.27', '871', 'Old Saybrook', 'Connecticut', 'Technology & Accessories'
+	--'$4,894.62', '871', 'Old Saybrook', 'Connecticut', 'Stationery and Supplies'
+	--'$11,542.63', '871', 'Old Saybrook', 'Connecticut', 'Art Supplies'
+	--'$14,529.89', '871', 'Old Saybrook', 'Connecticut', 'Apparel and Merchandise'
+=========================================================================================================
+
+
+Focus on timing promotions (back-to-school, semester starts)
+Offer bundles or discounts during peak periods
+
+Example: sell notebooks with textbooks
+Or art supplies with tablets
+
+
+What is the count of the products sold via store?
+Maybe a product is more popular in one region vs. another??
+
+
+There are less people in Connecticut -- something to consider --
+
+what category or product was most popular in 2024 vs 2025
+
+'2025', 'Technology & Accessories', '$1,771,412.87'
+'2025', 'Textbooks',                '$329,482.46'
+'2025', 'Apparel and Merchandise',  '$128,826.37'
+'2025', 'Art Supplies',             '$111,331.81'
+'2025', 'Books (General)',          '$50,088.03'
+'2025', 'Stationery and Supplies',  '$45,463.93'
+
+
+'2024', 'Technology & Accessories', '$1,145,190.84'
+'2024', 'Textbooks',                '$292,092.62'
+'2024', 'Apparel and Merchandise',  '$67,947.62'
+'2024', 'Art Supplies',             '$53,578.50'
+'2024', 'Books (General)',          '$22,070.79'
+'2024', 'Stationery and Supplies',  '$21,737.61'
